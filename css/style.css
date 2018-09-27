@@ -5,6 +5,23 @@
     margin:0px;
 }
   header {
+    /* display is a grid, each entity contains is a "block" in the grid */
+    display:grid;
+    /* this is 3 columns */
+    grid-template-columns: 10% 80% 10%;
+}
+
+    /* image is larger than it really needs to be expecially on smaller screens */
+  header div.header_logo2 img {
+    width:100%;
+}
+
+  header div.header_search {
+      /* this tells the browser to "span" the grid columns */
+  grid-column-start: 1;
+    /* notice the grid-column-end is number of columns + 1 */
+    grid-column-end: 4;
+}
 
 }
   div#MainContent {
@@ -18,8 +35,16 @@ footer {
   border-top-color: #cccccc;
   border-top-width: 5px;
   border-top-style: solid;
-  
-  border: 1px solid green;
+
+  padding-top:5px;
+
+  position:fixed;
+
+  bottom: 0px;
+
+  width: 100%;
+  padding-bottom: 5px;
+
 }
 footer nav {
   text-align:center;
@@ -33,6 +58,8 @@ footer nav a {
 }
 footer div.socialMedia {
   padding:20px;
+  padding-left: 10px;
+  padding-right: 10px;
   text-align:center;
 
 }
@@ -42,6 +69,46 @@ footer div.socialMedia {
 
 }
 
-div {
-  text-align:right;
+@media screen and (min-width: 800px) {
+  footer {
+    display:grid;
+    /* removed grid-column-gap it causes a horizontal scroll
+    grid-column-gap: 10px;
+    */
+    grid-template-columns: 50% 50%;
+
+  }
+
+  footer nav {
+    /* align text to left when the screen is wider */
+    text-align:left;
+  }
+
+  /* "first-child" is what is known as a pseudo class,
+     this will apply ONLY to the first a tag under the nav element to make it
+     line up with the main Content
+     */
+  footer nav a:first-child {
+    margin-left:0px
+  }
+
+  footer div.socialMedia {
+    /* remove padding on social media element and have text align to the right */
+    padding:0px;
+    text-align:right;
+  }
+
+  footer div.socialMedia a:last-child {
+    margin-right:0px
+  }
+  /***
+  section {
+  width:24%;
+  float:right;
+}
+  footer {
+  clear:both;
+
+}
+  ***/
 }
